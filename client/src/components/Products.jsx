@@ -446,7 +446,7 @@ export default function Products () {
                               <img
                                 src={product.thumbnail}
                                 alt={product.title}
-                                onClick={console.log(product.id)}
+                          
                                 className='h-full w-full object-cover object-center group-hover:opacity-75'
                               />
                             </div>

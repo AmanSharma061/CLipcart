@@ -28,9 +28,9 @@ function About() {
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0">
-          <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">Welcome to CLipCart</h2>
+          <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">Welcome to CLipKart</h2>
           <p className="mt-6 text-lg leading-8 text-gray-300">
-          At CLipCart, we believe in the seamless fusion of convenience and quality. Our journey began with a simple idea – to redefine the online shopping experience and bring joy to our customers' lives.
+          At CLipKart, we believe in the seamless fusion of convenience and quality. Our journey began with a simple idea – to redefine the online shopping experience and bring joy to our customers' lives.
           </p>
         </div>
         <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
