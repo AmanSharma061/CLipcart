@@ -1,6 +1,6 @@
-# Clip Cart - E-commerce Web App
+# ClipKart - E-commerce Web App
 
-Clip Cart is a full-fledged E-commerce web App Built using MERN STACK
+ClipKart is a full-fledged E-commerce web App Built using MERN STACK
 
 ## Table of Contents
 
@@ -12,7 +12,7 @@ Clip Cart is a full-fledged E-commerce web App Built using MERN STACK
 
 ## Introduction
 
-Clip Cart is a cutting-edge E-commerce web application designed to provide users with a seamless and enjoyable online shopping experience. With a user-friendly interface, secure authentication, and a robust product catalog, Clip Cart empowers customers to explore a diverse range of products effortlessly. The integration of secure payment options adds an extra layer of convenience, making Clip Cart a trustworthy platform for both buyers and sellers. Elevate your online shopping experience with Clip Cart - where simplicity meets sophistication in the world of E-commerce.
+ClipKart is a cutting-edge E-commerce web application designed to provide users with a seamless and enjoyable online shopping experience. With a user-friendly interface, secure authentication, and a robust product catalog, Clip Cart empowers customers to explore a diverse range of products effortlessly. The integration of secure payment options adds an extra layer of convenience, making Clip Cart a trustworthy platform for both buyers and sellers. Elevate your online shopping experience with Clip Cart - where simplicity meets sophistication in the world of E-commerce.
 
 ## Features
 
