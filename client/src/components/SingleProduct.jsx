@@ -27,11 +27,7 @@ function SingleProduct () {
   const { single } = s
   const product = single[0]
   const stars = product.rating
-  let myImg = []
-  for (let key in product.images) {
-    myImg = product.images[key]
-    break
-  }
+
   const filler = () => {
     const newArray = Array.from(
       {
@@ -63,7 +59,7 @@ function SingleProduct () {
     } else {
       navigate('/login')
     }
-    if (localStorage.getItem('storageToken')==="undefined") {
+    if (localStorage.getItem('storageToken') === 'undefined') {
       if (cartProducts.includes(product)) {
         skip()
       } else {
@@ -129,10 +125,10 @@ function SingleProduct () {
               </div>
             ) : (
               <>
-                <div className='lg:w-4/5 mx-auto md:flex items-center flex-wrap mdi:items-center md:justify-center flex md:py-12 '>
+                <div className='lg:w-4/5 mx-auto md:flex items-center object-cover flex-wrap mdi:items-center md:justify-center flex md:py-12 '>
                   <img
                     alt='ecommerce'
-                    src={myImg}
+                    src={product.images[0]}
                     className='md:w-[30%]  md:h-[35vh] h-[24vh] w-auto     rounded items-center flex mx-auto md:my-0  '
                   />
                   <div className='lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0'>
@@ -158,44 +154,12 @@ function SingleProduct () {
                     </p>
                     <div className='flex mt-6 items-center pb-5 border-b-2 text-xs  border-gray-200 mb-5'>
                       <div className='flex items-center'>
-                        <span className='mr-3'>Color</span>
-                        {/* {color.map((item, index) => {
-                          return (
-                            <button
-                              key={index}
-                              className={`border-2 
-
                        
-                               
-                      rounded-full w-4 h-4 focus:outline outline-gray-300 hover:outline ml-1`}
-                              style={{ backgroundColor: item }}
-                            ></button>
-                          )
-                        })}{' '} */}{' '}
+                       
                       </div>
-                      <div className='flex ml-6 items-center '>
-                        <span className='mr-3 '>Size</span>
-                        <div className='relative '>
-                          <select className='rounded border appearance-none border-gray-400 py-2 text-xs focus:outline-none focus:border-red-500  pl- pr-10'>
-                            <option>SM</option>
-                            <option>M</option>
-                            <option>L</option>
-                            <option>XL</option>
-                          </select>
-                          <span className='absolute  top-0  right-[-2px] h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center'>
-                            <svg
-                              fill='none'
-                              stroke='currentColor'
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                              strokeWidth='2'
-                              className='w-4 h-4'
-                              viewBox='0 0 24 24'
-                            >
-                              <path d='M6 9l6 6 6-6'></path>
-                            </svg>
-                          </span>
-                        </div>
+                      <div className='flex  items-center '>
+                        <span className='mr-3 '>Quantity</span>
+                      
                       </div>
                     </div>
                     <div className='flex'>

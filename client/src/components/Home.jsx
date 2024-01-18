@@ -71,23 +71,9 @@ export function Home (props) {
           <h2 className='text-2xl font-bold tracking-tight text-gray-900'>
             Best Sellers
           </h2>
-          {/* {loading ? (
-            <div className='flex justify-center items-center h-[80vh]'>
-              {' '}
-              <ThreeDots
-                height='60'
-                width='60'
-                radius='9'
-                color='#0d9488'
-                ariaLabel='three-dots-loading'
-                wrapperStyle={{}}
-                wrapperClassName=''
-                visible={true}
-              />{' '}
-            </div>
-          ) : null} */}
+      
           <div className='mt-6  grid  gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 md:w-[100%] grid-cols-2 '>
-            {products.map(product => (
+            {products.slice(0,12).map(product => (
               <div
                 key={product.id}
                 className='group relative shadow-md rounded py-1 px-2 '
@@ -99,9 +85,10 @@ export function Home (props) {
                   className='aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60 '
                   key={product.id}
                 >
+                  {console.log(product.images)}
                   <img
-                    src={product.images[0]}
-                    alt={product.imageAlt}
+                    src={product.thumbnail }
+                    alt={"jbj,j"}
                     className='h-full w-full  object-contain bg-white  lg:h-full lg:w-full '
                   />
                 </div>

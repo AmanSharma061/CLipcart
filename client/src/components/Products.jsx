@@ -13,6 +13,7 @@ import {
 } from '@heroicons/react/20/solid'
 import { useNavigate } from 'react-router-dom'
 import SingleContext from '../contexts/singleProduct/singleContext'
+import { FaRupeeSign } from 'react-icons/fa'
 
 function classNames (...classes) {
   return classes.filter(Boolean).join(' ')
@@ -63,9 +64,9 @@ export default function Products () {
   const [productsPerPage, setProductsPerPage] = useState(15)
   //For Current Page of Products
   const [currentPage, setCurrentPage] = useState(1)
-  //State For Rendering the products 
+  //State For Rendering the products
   const [currentProducts, setCurrentProducts] = useState(newProducts)
-  //Getting the Last index of the products or we can say that we can check from the last index that in which page we are currently at 
+  //Getting the Last index of the products or we can say that we can check from the last index that in which page we are currently at
   const lastIndex = currentPage * productsPerPage
   //Getting the first index of the products or we can say that we can check from the first index that in which page we are currently at
 
@@ -79,18 +80,13 @@ export default function Products () {
     if (i < 0) {
       i = 0
       setCurrentPage(i + 1)
-    }
-    else if (i > pages - 1) {
+    } else if (i > pages - 1) {
       i = pages - 1
       setCurrentPage(i + 1)
-    }
-    else
-    {
-
+    } else {
       setCurrentPage(i + 1)
     }
   }
-
 
   useEffect(() => {
     setCurrentProducts(newProducts.slice(firstIndex, lastIndex))
@@ -177,7 +173,7 @@ export default function Products () {
           aria-label='Pagination'
         >
           <NavLink
-            to={`/products?page=${currentPage }`}
+            to={`/products?page=${currentPage}`}
             onClick={e => {
               pageHandler(e, currentPage - 2)
             }}
@@ -187,18 +183,15 @@ export default function Products () {
             <ChevronLeftIcon className='h-5 w-5' aria-hidden='true' />
           </NavLink>
           {Array.from({ length: pages }, (_, i) => (
-
             <NavLink
               key={i}
-              
               aria-current='page'
-            
               onClick={() => {
                 pageHandler(event, i)
-                
               }}
-              
-              className={`z-10 relative inline-flex ${currentPage===i+1?"bg-teal-600 text-white":""} items-center px-4 py-2 border text-sm font-medium`}
+              className={`z-10 relative inline-flex ${
+                currentPage === i + 1 ? 'bg-teal-600 text-white' : ''
+              } items-center px-4 py-2 border text-sm font-medium`}
             >
               {i + 1}
             </NavLink>
@@ -207,7 +200,7 @@ export default function Products () {
             onClick={e => {
               pageHandler(e, currentPage)
             }}
-            to={`/products?page=${currentPage }`}
+            to={`/products?page=${currentPage}`}
             className='relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 hover:bg-teal-600 hover:text-white text-sm font-medium text-gray-500'
           >
             <span className='sr-only'>Next</span>
@@ -226,8 +219,11 @@ export default function Products () {
             <div>
               <p className='text-sm text-gray-700'>
                 Showing <span className='font-medium'>{currentPage}</span> to{' '}
-                <span className='font-medium'>{productsPerPage*currentPage}</span> of{' '}
-                <span className='font-medium '>{products.length}</span> results
+                <span className='font-medium'>
+                  {productsPerPage * currentPage}
+                </span>{' '}
+                of <span className='font-medium '>{products.length}</span>{' '}
+                results
               </p>
             </div>
             <div>{<PaginationNav />}</div>
@@ -434,31 +430,44 @@ export default function Products () {
                 <div className='lg:col-span-3 '>
                   {' '}
                   <div className='bg-white  py-2 '>
-                    <div className='mx-auto max-w-2xl px-4  md:-mt-16  sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8 '>
+                    <div className='mx-auto max-w-2xl px-4  md:-mt-16  sm:px-6 sm:py-16 lg:max-w-6xl lg:px-8  '>
                       <h2 className='sr-only'>Products</h2>
 
-                      <div className={`${gridView}  `}>
+                      <div className={`${gridView}   `}>
                         {currentProducts.map(product => (
                           <a
                             key={product.id}
-                            className='group border rounded-md border-opacity-60 shadow-sm  px-2  pb-2 pt-1  box-border  hover:shadow-lg'
+                            className='group border rounded-md border-opacity-60 shadow-sm flex justify-between flex-col px-2  pb-2 pt-1  box-border  hover:shadow-lg'
                             onClick={() => {
                               navigator(product.id)
                             }}
                           >
                             <div className='aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 '>
                               <img
-                                src={product.images[0]}
+                                src={product.thumbnail}
                                 alt={product.title}
+                                onClick={console.log(product.id)}
                                 className='h-full w-full object-cover object-center group-hover:opacity-75'
                               />
                             </div>
                             <h3 className='mt-4 text-sm text-gray-700'>
                               {product.title}
                             </h3>
-                            <p className='mt-1 text-md font-medium text-gray-900 '>
-                              {product.price}
-                            </p>
+                            <div className='flex  items-center gap-x-2 justify-between'>
+                              <p className='mt-1 text-md font-medium flex  items-center line-through opacity-40  text-gray-900  '>
+                                <FaRupeeSign /> {product.price}
+                              </p>
+                              <p className='text-gray-800 flex items-center text-medium '>
+                                {' '}
+                                <FaRupeeSign className='h-4 font-light opacity-75' />
+                                {Math.round(
+                                  product.price -
+                                    (product.price *
+                                      product.discountPercentage) /
+                                      100
+                                )}
+                              </p>
+                            </div>
                           </a>
                         ))}
                       </div>
