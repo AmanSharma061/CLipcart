@@ -1,0 +1,3 @@
+Client Id=QxcTzMrl7ZCIXQ8KjAc9CxoZVdLIXzVW
+DOMAIN=dev-5iue7kt1c1uoyfp4.us.auth0.com
+client secret =jj3fOXrRhNFbvAHKpKX9aywr_QKSmn3Vtms_BWDCP_4-JJQ4-cDA3rNyFtfz-TGr
