@@ -10,6 +10,7 @@ app.use (express.json ());
 app.use (router);
 
 connect ();
+app.use(express.static(process.cwd() + '/dist'))
 dotenv.config ({path: './config.env'});
 app.listen (port, () => {
   console.log ('Server is listening on port 3000');
