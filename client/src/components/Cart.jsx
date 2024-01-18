@@ -29,7 +29,7 @@ function Cart () {
     yy = yy.filter(item => item.id !== id)
 
     setCartProducts(yy)
-    setCartLength(yy.length)
+    setCartLength(yy?.length)
     localStorage.setItem('cartProducts', JSON.stringify(yy))
     setSize(false)
   }
@@ -60,7 +60,7 @@ function Cart () {
     xx = JSON.parse(xx)
     setCartProducts(xx)
     setCheckoutCartProducts(xx)
-    setCartLength(xx.length)
+    setCartLength(xx?.length)
     if (cartProducts.length == 0) {
       setSize(false)
     }
@@ -72,13 +72,13 @@ function Cart () {
     let xx = localStorage.getItem('cartProducts')
     let yy = JSON.parse(xx)
     yy.map(item => {
-      if (item.quantity == undefined) {
+      if (item?.quantity == undefined) {
         item.quantity = 1
       }
 
       Total =
         Total +
-        Math.round(item.price - (item.price * item.discountPercentage) / 100) *
+        Math.round(item?.price - (item?.price * item.discountPercentage) / 100) *
           item.quantity
     })
     settotal(Total)
@@ -87,7 +87,6 @@ function Cart () {
   useEffect(() => {
     Totaler()
     setCheckoutCartProducts(cartProducts)
-    
   }, [cartProducts])
   useEffect(() => {
     const xxx = localStorage.getItem('cartProducts')
@@ -96,48 +95,44 @@ function Cart () {
       setIsAuthenticated(true)
     }
   }, [])
-console.log(localStorage.getItem("storageToken"))
-if(localStorage.getItem("storageToken")==="undefined"){
+  console.log(localStorage.getItem('storageToken'))
+  if (localStorage.getItem('storageToken') === 'undefined') {
+    setIsAuthenticated(true)
+  }
 
-  setIsAuthenticated(true)
-}
-
-if(isAuthenticated===false){
-  return(
-    <>
-    <div className='flex flex-col items-center justify-center h-[90vh]'>
-      <h1 className='text-2xl font-medium text-center text-gray-600'>
-        Please Login to Continue
-      </h1>
-      <NavLink
-        to='/login'
-        className='flex items-center justify-center rounded-md border border-transparent bg-teal-600 px-8 py-2  text-base font-medium text-white shadow-sm hover:bg-teal-700 mt-10'
-      >
-        Login
-      </NavLink>
-    </div>
-
-    </>
-  )
-}else if(cartLength===0){
-  return(
-    <>
-    <div className='flex flex-col items-center justify-center h-[90vh]'>
-      <h1 className='text-2xl font-medium text-center text-gray-600'>
-        Cart is Empty
-      </h1>
-      <NavLink
-        to='/products'
-        className='flex items-center justify-center rounded-md border border-transparent bg-teal-600 px-8 py-2  text-base font-medium text-white shadow-sm hover:bg-teal-700 mt-10'
-      >
-        Continue Shopping
-      </NavLink>
-    </div>
-
-    </>
-  )
-}
-
+  if (isAuthenticated === false) {
+    return (
+      <>
+        <div className='flex flex-col items-center justify-center h-[90vh]'>
+          <h1 className='text-2xl font-medium text-center text-gray-600'>
+            Please Login to Continue
+          </h1>
+          <NavLink
+            to='/login'
+            className='flex items-center justify-center rounded-md border border-transparent bg-teal-600 px-8 py-2  text-base font-medium text-white shadow-sm hover:bg-teal-700 mt-10'
+          >
+            Login
+          </NavLink>
+        </div>
+      </>
+    )
+  } else if (cartLength === 0) {
+    return (
+      <>
+        <div className='flex flex-col items-center justify-center h-[90vh]'>
+          <h1 className='text-2xl font-medium text-center text-gray-600'>
+            Cart is Empty
+          </h1>
+          <NavLink
+            to='/products'
+            className='flex items-center justify-center rounded-md border border-transparent bg-teal-600 px-8 py-2  text-base font-medium text-white shadow-sm hover:bg-teal-700 mt-10'
+          >
+            Continue Shopping
+          </NavLink>
+        </div>
+      </>
+    )
+  }
 
   return (
     <>
@@ -196,11 +191,11 @@ if(isAuthenticated===false){
                                     (product.price *
                                       product.discountPercentage) /
                                       100
-                                ) * (product.quantity || 1) }
+                                ) * (product.quantity || 1)}
                               </span>
                               <span className='flex items-center text-xs line-through opacity-50'>
                                 <FaRupeeSign className='text-xs pt-[1px]' />{' '}
-                               {product.price}
+                                {product.price}
                               </span>
                             </p>
                           </div>
