@@ -8,8 +8,7 @@ const router = express.Router ();
 import EmailNotification from '../db/subscriptionModel.js';
 //USER LOGIN ROUTE
 router.post ('/api/register', async (req, res) => {
-  // objects destructuring for getting the data from the request body
-  console.log (req.body);
+
   const {email, password, cpassword, cartProducts} = req.body;
   try {
     if (!email || !password || !cpassword) {
@@ -36,8 +35,7 @@ router.post ('/api/register', async (req, res) => {
       });
       // saving the user to the database
       await user.save ();
-      console.log (user);
-      res.status (201).json ({message: 'User registered successfully'});
+          res.status (201).json ({message: 'User registered successfully'});
     }
   } catch (err) {
     // if any error occurs then catch the error
@@ -70,22 +68,21 @@ router.post ('/api/login', async (req, res) => {
         });
         // sending the response that user logged in successfully
         localStorage.setItem ('cartProducts', JSON.stringify (cartProducts));
-        console.log ('sss', req.token);
+
         // cc.push(cartProducts)
 
         return res.status (200).json ({message: 'User logged in successfully'});
       }
     }
   } catch (error) {
-    // if any error occurs then catch the error
+
     console.log (error);
   }
 });
+
+
 //USER LOGOUT ROUTE
 router.get ('/api/logout', async (req, res) => {
-  // clearing the cookie
-
-  // res.status(202).clearCookie('auth-token').send('cookie cleared')
 
   res.clearCookie ('jwtoken', {path: '/'});
   res.status (200).send ({message: 'User logged out successfully'});
@@ -108,9 +105,7 @@ router.post ('/api/address', async (req, res) => {
     cartProducts,
   } = req.body;
 
-  //getting the user id from the request
-  // const userID = req.user._id;
-  // console.log (userID);
+
 
   try {
     if (
@@ -126,8 +121,7 @@ router.post ('/api/address', async (req, res) => {
     ) {
       return res.status (422).json ({error: 'Please fill all the fields'});
     } else {
-      // if user does not exist then create a new user
-      // console.log (req.user._id)
+ 
 
       for (let i = 0; i < cartProducts.length; i++) {
         aaaa.push ({
@@ -138,7 +132,7 @@ router.post ('/api/address', async (req, res) => {
       }
       
       const order = new Order ({
-        // user: req.user._id,
+
         shippingAddress: {
           firstname,
           lastname,
@@ -153,13 +147,12 @@ router.post ('/api/address', async (req, res) => {
         orderitems: aaaa,
       });
 
-      // saving the user to the database
       await order.save ();
 
       res.status (201).json ({message: 'User registered successfully'});
     }
   } catch (err) {
-    // if any error occurs then catch the error
+
     console.log (err);
   }
 });

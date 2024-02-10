@@ -25,7 +25,7 @@ function Login () {
         body: JSON.stringify({ email, password })
       })
       const responseData = await response.json()
-      console.log(responseData)
+    
 
       const storageToken = responseData.token
 

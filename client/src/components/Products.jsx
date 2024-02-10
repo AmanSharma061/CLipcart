@@ -60,18 +60,22 @@ export default function Products () {
   }
   const [newProducts, setNewProduct] = useState([...products])
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
-
   const [productsPerPage, setProductsPerPage] = useState(15)
+
   //For Current Page of Products
   const [currentPage, setCurrentPage] = useState(1)
+
   //State For Rendering the products
+
   const [currentProducts, setCurrentProducts] = useState(newProducts)
   //Getting the Last index of the products or we can say that we can check from the last index that in which page we are currently at
+
   const lastIndex = currentPage * productsPerPage
   //Getting the first index of the products or we can say that we can check from the first index that in which page we are currently at
 
   const firstIndex = lastIndex - productsPerPage
   ///Calculating how much pages will be there on the basis of the length of the products Array
+
   const pages = Math.ceil(products.length / productsPerPage)
 
   const pageHandler = (e, i) => {
@@ -91,8 +95,6 @@ export default function Products () {
   useEffect(() => {
     setCurrentProducts(newProducts.slice(firstIndex, lastIndex))
   }, [currentPage, newProducts])
-
-  // console.log('newProducts', newProducts.slice(firstIndex, lastIndex))
 
   function ProductsNav () {
     return (
@@ -446,7 +448,6 @@ export default function Products () {
                               <img
                                 src={product.thumbnail}
                                 alt={product.title}
-                          
                                 className='h-full w-full object-cover object-center group-hover:opacity-75'
                               />
                             </div>

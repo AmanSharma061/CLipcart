@@ -95,7 +95,7 @@ function Cart () {
       setIsAuthenticated(true)
     }
   }, [])
-  console.log(localStorage.getItem('storageToken'))
+
   if (localStorage.getItem('storageToken') === 'undefined') {
     setIsAuthenticated(true)
   }

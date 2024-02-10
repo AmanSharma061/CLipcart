@@ -12,7 +12,6 @@ import { products } from '../files/arrays'
 export function Home (props) {
   const navigate = useNavigate()
 
-  // const [loading, setLoading] = useState(true)
 
   const settings = {
     dots: true,
@@ -28,7 +27,7 @@ export function Home (props) {
   const sin = useContext(SingleContext)
 
   const navigator = id => {
-    console.log(id)
+    
     sin.getSingle(id)
     navigate('/product')
   }
@@ -85,7 +84,6 @@ export function Home (props) {
                   className='aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60 '
                   key={product.id}
                 >
-                  {console.log(product.images)}
                   <img
                     src={product.thumbnail }
                     alt={"jbj,j"}

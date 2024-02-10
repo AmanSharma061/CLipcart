@@ -1,11 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { toast, ToastContainer } from 'react-toastify'
 
 function Footer () {
   const [email, setEmail] = React.useState('')
   const SubHandler = async e => {
     e.preventDefault()
-// console.log(email)
+
     const res = await fetch('/api/subscribe', {
       method: 'POST',
       headers: {
@@ -16,7 +17,6 @@ function Footer () {
       })
     })
     const data = await res.json()
-    console.log(data)
     if (data.status === 422 || !data) {
       toast.error('Invalid Email', {
         position: 'top-center',
@@ -24,7 +24,6 @@ function Footer () {
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true
-
       })
     } else {
       setEmail('')
@@ -36,7 +35,6 @@ function Footer () {
 
         closeOnClick: true,
         pauseOnHover: true
-        
       })
       window.scrollTo(0, 0)
     }
@@ -184,21 +182,21 @@ function Footer () {
 
                 <ul className='mt-6 space-y-4 text-sm'>
                   <li>
-                    <a
-                      href='#'
+                    <Link
+                      to='/about'
                       className='text-gray-300 transition hover:opacity-75'
                     >
                       About
-                    </a>
+                    </Link>
                   </li>
 
                   <li>
-                    <a
-                      href='#'
+                    <Link
+                      to='/contact'
                       className='text-gray-300 transition hover:opacity-75'
                     >
                       Contact
-                    </a>
+                    </Link>
                   </li>
 
                   <li>
@@ -211,12 +209,12 @@ function Footer () {
                   </li>
 
                   <li>
-                    <a
-                      href='#'
+                    <Link
+                      to='/products'
                       className='text-gray-300 transition hover:opacity-75'
                     >
                       Products
-                    </a>
+                    </Link>
                   </li>
                   <li className=' w-fit '>
                     <input
@@ -238,12 +236,12 @@ function Footer () {
 
                 <ul className='mt-6 space-y-4 text-sm'>
                   <li>
-                    <a
-                      href='#bestseller'
+                    <Link
+                      to='/'
                       className='text-gray-300 transition hover:opacity-75'
                     >
                       Best Sellers
-                    </a>
+                    </Link>
                   </li>
 
                   <li>

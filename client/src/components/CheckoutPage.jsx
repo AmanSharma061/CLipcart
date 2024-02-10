@@ -449,7 +449,7 @@ function CheckoutPage () {
         })
       })
       const data = await response.json()
-      console.log(data)
+
 
       if (data.message === 'User registered successfully') {
         setSaved(true)
@@ -477,8 +477,7 @@ function CheckoutPage () {
   }
   useEffect(() => {
     window.scrollTo(0, 0)
-    //  setSaved(true)
-    console.log(cartProducts)
+
     cartProducts.map(item => {
       if (item.quantity === null) {
         item.quantity = 1

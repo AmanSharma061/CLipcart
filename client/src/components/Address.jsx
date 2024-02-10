@@ -198,7 +198,7 @@ function Address () {
         })
       })
       const data = await response.json()
-      console.log(data)
+
 
       if (data.message) {
         alert('Address Saved Successfully')

@@ -55,10 +55,9 @@ function SingleProduct () {
   }
   const adder = () => {
     // setCount(count + 1)
-    if (isAuthenticated) {
-    } else {
+    if (!isAuthenticated) {
       navigate('/login')
-    }
+    } 
     if (localStorage.getItem('storageToken') === 'undefined') {
       if (cartProducts.includes(product)) {
         skip()
